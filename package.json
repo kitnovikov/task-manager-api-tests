@@ -1,0 +1,23 @@
+{
+  "name": "task-manager-api-tests",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/kitnovikov/task-manager-api-tests#readme",
+  "bugs": {
+    "url": "https://github.com/kitnovikov/task-manager-api-tests/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kitnovikov/task-manager-api-tests.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "vitest.config.js",
+  "directories": {
+    "test": "src"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
