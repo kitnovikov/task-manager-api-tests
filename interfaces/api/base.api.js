@@ -1,5 +1,5 @@
 export default class BaseApi {
-    constructor(client) {
-        this.client = client
-    }
+  constructor(client) {
+    this.client = client;
+  }
 }

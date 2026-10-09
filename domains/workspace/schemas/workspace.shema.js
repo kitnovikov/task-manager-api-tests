@@ -1,6 +1,7 @@
 import * as yup from "yup";
 
-export const workspaceSchema = yup.object({
+export const workspaceSchema = yup
+  .object({
     id: yup.string().required().uuid(),
     name: yup.string().required().min(3).max(30),
     slug: yup.string().required().min(3).max(5),
@@ -10,4 +11,5 @@ export const workspaceSchema = yup.object({
     currentUserRole: yup.string().required(), // [!]
     joinedAt: yup.string().required().datetime(),
     createdAt: yup.string().required().datetime(),
-}).noUnknown(true)
+  })
+  .noUnknown(true);

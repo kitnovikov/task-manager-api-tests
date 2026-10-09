@@ -1,7 +1,6 @@
 {
   "name": "task-manager-api-tests",
   "version": "1.0.0",
-  "description": "",
   "homepage": "https://github.com/kitnovikov/task-manager-api-tests#readme",
   "bugs": {
     "url": "https://github.com/kitnovikov/task-manager-api-tests/issues"
@@ -10,14 +9,30 @@
     "type": "git",
     "url": "git+https://github.com/kitnovikov/task-manager-api-tests.git"
   },
-  "license": "ISC",
-  "author": "",
   "type": "module",
-  "main": "vitest.config.js",
-  "directories": {
-    "test": "src"
-  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "npx eslint .",
+    "lint:fix": "npx eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test:all": "vitest run",
+    "test:smoke": "vitest run --tags-filter=\"smoke\""
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.12.0",
+    "globals": "^17.13.0",
+    "prettier": "3.9.9"
+  },
+  "dependencies": {
+    "@faker-js/faker": "^10.6.0",
+    "allure": "^3.20.1",
+    "allure-js-commons": "^3.13.0",
+    "allure-vitest": "^3.13.0",
+    "axios": "^1.20.0",
+    "dotenv": "^18.0.7",
+    "pino": "^10.4.0",
+    "vitest": "^4.1.11",
+    "yup": "^1.7.1"
   }
 }

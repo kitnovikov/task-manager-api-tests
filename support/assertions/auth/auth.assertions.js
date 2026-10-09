@@ -1,34 +1,39 @@
-
-import {expect} from "vitest";
+import { expect } from "vitest";
 // import {parseSetCookie} from "cookie";
-import {expectedData, expectedSchema, expectedStatus} from "../common/asserts.js";
-import {tokensSchema} from "../../../domains/auth/schemas/tokens.schema.js";
-import {decodeJwt} from "../../../src/utils.js";
+import {
+  expectedData,
+  expectedSchema,
+  expectedStatus,
+} from "../common/asserts.js";
+import { tokensSchema } from "../../../domains/auth/schemas/tokens.schema.js";
+import { decodeJwt } from "../../../src/utils.js";
 import AuthError from "../../../domains/auth/errors/auth.error.js";
 
 export async function expectSuccessfulLogin(response) {
-    await expectedStatus(response.status, 200)
-    await expectedSchema(tokensSchema, response.data)
+  await expectedStatus(response.status, 200);
+  await expectedSchema(tokensSchema, response.data);
 
-    const { accessToken, refreshToken } = response.data
+  const { accessToken, refreshToken } = response.data;
 
-    expectJwtToken(accessToken)
-    expectJwtToken(refreshToken)
+  expectJwtToken(accessToken);
+  expectJwtToken(refreshToken);
 }
 
 export function expectJwtToken(token) {
-    const payload = decodeJwt(token)
+  const payload = decodeJwt(token);
 
-    expect(payload).toEqual(expect.objectContaining({
-        id: expect.any(String),
-        firstName: expect.any(String),
-        lastName: expect.any(String),
-        iat: expect.any(Number),
-        exp: expect.any(Number),
-    }))
+  expect(payload).toEqual(
+    expect.objectContaining({
+      id: expect.any(String),
+      firstName: expect.any(String),
+      lastName: expect.any(String),
+      iat: expect.any(Number),
+      exp: expect.any(Number),
+    }),
+  );
 
-    expect(payload).not.toHaveProperty('password')
-    expect(payload.exp).toBeGreaterThan(payload.iat)
+  expect(payload).not.toHaveProperty("password");
+  expect(payload.exp).toBeGreaterThan(payload.iat);
 }
 
 // export function expectRefreshTokenCookie(response) {
@@ -50,7 +55,7 @@ export function expectJwtToken(token) {
 // }
 
 export async function expectIncorrectCredentials(response) {
-    await expectedStatus(response.status, 400)
-    await expectedSchema(response.data, AuthError.invalidCredentialsError)
-    await expectedData(response.data, AuthError.invalidCredentialsError)
+  await expectedStatus(response.status, 400);
+  await expectedSchema(response.data, AuthError.invalidCredentialsError);
+  await expectedData(response.data, AuthError.invalidCredentialsError);
 }

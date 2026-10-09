@@ -1,11 +1,14 @@
 import * as yup from "yup";
 
-const token = yup.string().matches(
+const token = yup
+  .string()
+  .matches(
     /^[A-Za-z0-9-_]+\.[A-Za-z0-9-_]+\.[A-Za-z0-9-_]+$/,
-    'Invalid token format'
-).required()
+    "Invalid token format",
+  )
+  .required();
 
 export const tokensSchema = yup.object({
-    accessToken: token,
-    refreshToken: token,
-})
+  accessToken: token,
+  refreshToken: token,
+});

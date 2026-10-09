@@ -1,8 +1,8 @@
 export default class HttpResponse {
-    constructor({ status, data, headers, timeout }) {
-        this.status = status
-        this.data = data
-        this.headers = headers
-        this.timeout = timeout
-    }
+  constructor({ status, data, headers, timeout }) {
+    this.status = status;
+    this.data = data;
+    this.headers = headers;
+    this.timeout = timeout;
+  }
 }
